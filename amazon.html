@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Shipping Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        button {
+            background-color: blue; /* Button background color */
+            color: white;           /* Button text color */
+            border: none;          /* Remove default border */
+            padding: 10px 15px;    /* Add some padding */
+            cursor: pointer;       /* Change cursor on hover */
+            font-size: 16px;       /* Font size */
+        }
+        button:hover {
+            background-color: darkblue; /* Darker blue on hover */
+        }
+        .js-total-cost {
+            color: red;              /* Change text color to red */
+            font-size: 20px;         /* Increase font size for visibility */
+            margin-top: 10px;        /* Add some spacing above */
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>Amazon Shipping Calculator</h1>
+    <input type="number" placeholder="Cost of order" class="js-cost-input" onkeydown="handleCostKeydown(event);">
+
+    <button onclick="calculateTotal();">Calculate</button>
+    <p class="js-total-cost"></p>
+
+    <script>
+        function handleCostKeydown(event) {
+            if (event.key === 'Enter') {
+                calculateTotal();
+            }
+        }
+
+        function calculateTotal() {
+            const inputElement = document.querySelector('.js-cost-input');
+            let cost = Number(inputElement.value);
+            if (isNaN(cost)) {
+                alert("Please enter a valid number.");
+                return; // Exit if the input is not a number
+            }
+            if (cost < 40) {
+                cost += 10; // Add shipping cost if below $40
+            }
+            document.querySelector('.js-total-cost').innerHTML = `$${cost.toFixed(2)}`; // Format to two decimal places
+        }
+    </script>
+</body>
+</html>

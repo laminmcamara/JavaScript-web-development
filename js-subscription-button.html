@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Subscribe Button</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .js-subscribe-button {
+            background-color: red; /* Background color for the button */
+            color: white;          /* Text color */
+            border: none;         /* Remove default border */
+            padding: 10px 20px;   /* Add some padding */
+            cursor: pointer;      /* Change cursor on hover */
+            font-size: 16px;      /* Font size */
+        }
+        .js-subscribe-button:hover {
+            background-color: darkred; /* Darker red on hover */
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>Welcome to Lamin's Blog! please subscribe to this Channel</h1>
+    <button onclick="subscribe();" class="js-subscribe-button">Subscribe</button>
+
+    <script>
+        function subscribe() {
+            const buttonElement = document.querySelector('.js-subscribe-button');
+            if (buttonElement.innerHTML.toLowerCase() === 'subscribe') {
+                buttonElement.innerHTML = 'Subscribed';
+            } else {
+                buttonElement.innerHTML = 'Subscribe';
+            }
+        }
+    </script>
+</body>
+</html>
